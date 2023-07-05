@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Template -->
+<template id="weather-template">
+    <div class="weather-card">
+        <h3 class="country">Country</h3>
+        <h4 class="city__region">City &dot; Region</h4>
+        <p class="local__time">Local Time: </p>
+        <p class="temperature">Temperature: &#8451;</p>
+        <p class="feels__like--temp">Feels Like: &#8451;</p>
+        <p class="weather__conditions">Conditions: </p>
+        <img src="" class="conditions__image" alt="">
+    </div>
+</template>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin's Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="weather__app">
+        <nav>
+            <form action="" id="nav__search--bar" data-search-form>
+                <h4 class="nav__header">Odin Weather</h4>
+                <input type="text" id="search__input" data-search-input placeholder="Enter a Location" />
+                <button type="submit" value="submit">Search</button>
+            </form>
+            <button class="temperature__conversion--button">&#176;C / &#176;F</button>
+        </nav>
+        <div id="weather__container"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
