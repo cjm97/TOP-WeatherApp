@@ -6,8 +6,8 @@
         <h3 class="country">Country</h3>
         <h4 class="city__region">City &dot; Region</h4>
         <p class="local__time">Local Time: </p>
-        <p class="temperature">Temperature: &#8451;</p>
-        <p class="feels__like--temp">Feels Like: &#8451;</p>
+        <p class="temperature">Temperature:<span class="temp" id="temp__number">temp</span><span class="metric__imperial">°C</span></p>
+        <p class="feels__like--temp">Feels Like: <span class="temp" id="feels__like--number">temp</span><span><span class="metric__imperial">°C</span></p>
         <p class="weather__conditions">Conditions: </p>
         <img src="" class="conditions__image" alt="">
     </div>
@@ -16,7 +16,7 @@
 <template id="weather-forecast">
     <div class="forecast__container">
         <h3 class="forecast__header">Forecast Day</h4>
-            <p class="forecast__temperature">Min Temp, Max Temp, Avg Temp</p>
+            <p class="forecast__temperature">Min: <span class="temp" id="min__temp">10</span><span class="metric__imperial">°C</span>, Max: <span class="temp" id="max__temp">20</span><span class="metric__imperial">°C</span>, Average: <span class="temp" id="avg__temp">15</span><span class="metric__imperial">°C</span></p>
             <p class="forecast__precipitation-humidity">Total precipitation / Humidity</p>
             <p class="forecast__rain">Will it Rain / Chance of Rain</p>
     </div>
@@ -37,7 +37,7 @@
                 <input type="text" id="search__input" data-search-input placeholder="Enter a Location" />
                 <button type="submit" value="submit">Search</button>
             </form>
-            <button class="temperature__conversion--button">&#176;C / &#176;F</button>
+            <button class="temperature__conversion--button" data-temperature-conversion>&#176;C / &#176;F</button>
         </nav>
         <div id="weather__container"></div>
     </div>
