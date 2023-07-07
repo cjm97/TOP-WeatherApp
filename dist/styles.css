@@ -57,3 +57,8 @@ nav {
   color: var(--light);
   background-color: var(--dark);
 }
+
+.week__container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
