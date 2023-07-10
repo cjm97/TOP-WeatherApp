@@ -3,22 +3,34 @@
 <!-- Template -->
 <template id="weather-template">
     <div class="weather-card">
-        <h3 class="country">Country</h3>
-        <h4 class="city__region">City &dot; Region</h4>
-        <p class="local__time">Local Time: </p>
-        <p class="temperature">Temperature:<span class="temp" id="temp__number">temp</span><span class="metric__imperial">°C</span></p>
-        <p class="feels__like--temp">Feels Like: <span class="temp" id="feels__like--number">temp</span><span><span class="metric__imperial">°C</span></p>
-        <p class="weather__conditions">Conditions: </p>
-        <img src="" class="conditions__image" alt="">
+        <div class="weather__info">
+
+            <h3 class="country">Country</h3>
+            <h4 class="city__region">City ⋅ Region</h4>
+            <p class="temperature"><span class="temp" id="temp__number">temp</span><span
+                    class="metric__imperial">°C</span>
+            </p>
+            <p class="feels__like--temp">Feels Like: <span class="temp" id="feels__like--number">temp</span><span><span
+                        class="metric__imperial">°C</span></p>
+            <p class="weather__conditions">Conditions: </p>
+        </div>
+        <figure class="conditions__wrapper">
+            <img src="" class="conditions__image" alt="">
+        </figure>
     </div>
 </template>
 
 <template id="weather-forecast">
     <div class="forecast__container">
         <h3 class="forecast__header">Forecast Day</h4>
-            <p class="forecast__temperature">Min: <span class="temp" id="min__temp">10</span><span class="metric__imperial">°C</span>, Max: <span class="temp" id="max__temp">20</span><span class="metric__imperial">°C</span>, Average: <span class="temp" id="avg__temp">15</span><span class="metric__imperial">°C</span></p>
+            <p class="forecast__temperature">
+                <strong>LO:</strong> <span class="temp" id="min__temp">10</span><span class="metric__imperial">°C</span>
+                <strong>HI:</strong> <span class="temp" id="max__temp">20</span><span class="metric__imperial">°C</span>
+                <strong>AVG:</strong> <span class="temp" id="avg__temp">15</span><span class="metric__imperial">°C</span>
+            </p>
             <p class="forecast__precipitation-humidity">Total precipitation / Humidity</p>
             <p class="forecast__rain">Will it Rain / Chance of Rain</p>
+            <img src="" alt="" class="forecast__image">
     </div>
 </template>
 
@@ -27,6 +39,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin's Weather App</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
@@ -34,12 +48,15 @@
         <nav>
             <form action="" id="nav__search--bar" data-search-form>
                 <h4 class="nav__header">Odin Weather</h4>
-                <input type="text" id="search__input" data-search-input placeholder="Enter a Location" />
-                <button type="submit" value="submit">Search</button>
+                <input type="text" id="search__input" class="nav__search" data-search-input
+                    placeholder="Enter a Location" />
+                <button type="submit" value="submit" class="nav__button">Search</button>
             </form>
             <button class="temperature__conversion--button" data-temperature-conversion>&#176;C / &#176;F</button>
         </nav>
-        <div id="weather__container"></div>
+        <div id="weather__container">
+
+        </div>
     </div>
 
     <script src="main.js"></script>

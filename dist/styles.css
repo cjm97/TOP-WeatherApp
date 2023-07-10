@@ -9,14 +9,14 @@
 }
 
 :root {
-  --blue: #007bff;
+  --blue: #0284c7;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffc107;
-  --green: #28a745;
+  --green: #72a276;
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
@@ -30,6 +30,7 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
+  --emerald: #047857;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -37,13 +38,52 @@
   --breakpoint-xl: 1200px;
 }
 
+body {
+  background-color: var(--blue);
+}
+
 .nav__header {
   display: inline-block;
   padding: 4px;
+  font-size: 1.25rem;
+}
+
+.nav__search {
+  padding: 4px 4px 4px 12px;
+}
+
+.nav__button {
+  padding: 4px;
+}
+.nav__button:hover {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.nav__search,
+.nav__button {
+  border-radius: 25px;
+  border: none;
+  margin-left: 1rem;
 }
 
 .temperature__conversion--button {
-  padding: 4px;
+  padding: 8px;
+  border-radius: 25px;
+  border: 2px solid var(--white);
+  color: var(--white);
+  background-color: var(--blue);
+  font-weight: bold;
+  font: 1rem;
+}
+
+.temperature__conversion--button:hover {
+  color: var(--dark);
+  background-color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .weather__app {
@@ -55,10 +95,70 @@ nav {
   display: flex;
   justify-content: space-between;
   color: var(--light);
-  background-color: var(--dark);
+  background-color: var(--emerald);
+  padding: 8px;
+  margin-bottom: 4px;
+  border-radius: 0px 0px 25px 25px;
+}
+
+/* main weather card styles */
+
+.weather-card {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 50px 10px 50px 10px;
+  margin-bottom: 4px;
+}
+.country {
+  font-size: 2rem;
+}
+
+.city__region {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.temperature {
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+.feels__like--temp {
+  font-size: 1.2rem;
+}
+
+.weather__conditions {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.conditions__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.conditions__image {
+  height: 35%;
 }
 
 .week__container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.week__container {
+  background-color: var(--emerald);
+  color: var(--white);
+  border-radius: 50px 10px 50px 10px;
+  padding: 1rem;
+}
+
+.forecast__header {
+  font-size: 2rem;
+  text-shadow: 2px 2px var(--dark);
 }

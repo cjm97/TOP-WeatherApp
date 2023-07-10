@@ -17,7 +17,7 @@ async function getWeather(location) {
   try {
     const response = await fetch(
       `http://api.weatherapi.com/v1/forecast.json?key=6b1d1ff3871e4566a6c62703233006&q=${location}&days=7`,
-      { mode: "cors" }
+      { mode: 'cors' }
     );
     const data = await response.json();
     let currentLocationData = processLocationData(data.location);
@@ -56,17 +56,16 @@ function processFutureWeather(data) {
       dailyWillItRain: data[i].day.daily_will_it_rain,
       dailyChanceOfRain: data[i].day.daily_chance_of_rain,
       uvIndex: data[i].day.uv,
-      condition: data[i].condition,
+      condition: data[i].day.condition,
     };
   }
-  console.log(forecast);
+  console.log(forecast.day0);
   return forecast;
 }
 
 function processLocationData(data) {
   let locationData = {
     country: data.country,
-    localTime: data.localtime,
     name: data.name,
     region: data.region,
   };
@@ -75,37 +74,37 @@ function processLocationData(data) {
 
 // DOM related functions
 
-const searchForm = document.querySelector("[data-search-form]");
-const searchInput = document.querySelector("[data-search-input]");
-const tempConverter = document.querySelector("[data-temperature-conversion]");
+const searchForm = document.querySelector('[data-search-form]');
+const searchInput = document.querySelector('[data-search-input]');
+const tempConverter = document.querySelector('[data-temperature-conversion]');
 
 //using input to create weather
-searchForm.addEventListener("submit", async (e) => {
+searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  if (document.contains(document.querySelector(".weather-card"))) {
-    document.querySelector(".weather-card").remove();
+  if (document.contains(document.querySelector('.weather-card'))) {
+    document.querySelector('.weather-card').remove();
   }
-  if (document.contains(document.querySelector(".week__container"))) {
-    document.querySelector(".week__container").remove();
+  if (document.contains(document.querySelector('.week__container'))) {
+    document.querySelector('.week__container').remove();
   }
   const { currentWeatherData, currentLocationData, weatherForecast } =
     await getWeather(searchInput.value);
   createWeatherInfo(currentWeatherData, currentLocationData);
   createForecastInfo(weatherForecast);
-  searchInput.value = "";
+  searchInput.value = '';
 });
 
-tempConverter.addEventListener("click", (e) => {
-  let temperatures = document.querySelectorAll(".temp");
-  let units = document.querySelectorAll(".metric__imperial");
+tempConverter.addEventListener('click', (e) => {
+  let temperatures = document.querySelectorAll('.temp');
+  let units = document.querySelectorAll('.metric__imperial');
   temperatures.forEach((temp) => {
     temp.innerText = convertTemperature(temp.innerText);
   });
   units.forEach((unit) => {
-    if (unit.innerText === "°C") {
-      unit.innerText = "°F";
+    if (unit.innerText === '°C') {
+      unit.innerText = '°F';
     } else {
-      unit.innerText = "°C";
+      unit.innerText = '°C';
     }
   });
   celsius = !celsius;
@@ -113,58 +112,60 @@ tempConverter.addEventListener("click", (e) => {
 
 //creating current weather information using template
 function createWeatherInfo(weatherData, locationData) {
-  console.log(weatherData);
   const template = document
-    .getElementById("weather-template")
+    .getElementById('weather-template')
     .content.cloneNode(true);
-  template.querySelector(".country").innerText = locationData.country;
+  template.querySelector('.country').innerText = locationData.country;
   template.querySelector(
-    ".city__region"
+    '.city__region'
   ).innerText = `${locationData.name} ⋅ ${locationData.region}`;
-  template.querySelector(".local__time").innerText = locationData.localTime;
-  template.querySelector("#temp__number").innerText = weatherData.temp;
-  template.querySelector("#feels__like--number").innerText =
+  template.querySelector('#temp__number').innerText = weatherData.temp;
+  template.querySelector('#feels__like--number').innerText =
     weatherData.feelsLikeTemp;
   template.querySelector(
-    ".weather__conditions"
+    '.weather__conditions'
   ).innerText = `Conditions: ${weatherData.condition}`;
-  template.querySelector(".conditions__image").src = weatherData.conditionImg;
-  document.querySelector("#weather__container").appendChild(template);
+  template.querySelector('.conditions__image').src = weatherData.conditionImg;
+  document.querySelector('#weather__container').appendChild(template);
 }
 
 // forecast weather information
 function createForecastInfo(weatherForecast) {
-  let weekContainer = document.createElement("div");
-  weekContainer.classList.add("week__container");
-  document.querySelector("#weather__container").appendChild(weekContainer);
+  let weekContainer = document.createElement('div');
+  weekContainer.classList.add('week__container');
+  document.querySelector('#weather__container').appendChild(weekContainer);
   for (let key in weatherForecast) {
     const date = new Date(weatherForecast[key].date),
-      day = date.getDay();
+      day = date.getDay(),
+      today = new Date();
     daysOfWeek = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
     ];
     const template = document
-      .getElementById("weather-forecast")
+      .getElementById('weather-forecast')
       .content.cloneNode(true);
-    template.querySelector(".forecast__header").innerText = daysOfWeek[day];
-    template.querySelector("#min__temp").innerText =
+    template.querySelector('.forecast__header').innerText =
+      today.getDay() === date.getDay() ? 'Today' : daysOfWeek[day];
+    template.querySelector('#min__temp').innerText =
       weatherForecast[key].minTemp;
-    template.querySelector("#max__temp").innerText =
+    template.querySelector('#max__temp').innerText =
       weatherForecast[key].maxTemp;
-    template.querySelector("#avg__temp").innerText =
+    template.querySelector('#avg__temp').innerText =
       weatherForecast[key].avgTemp;
     template.querySelector(
-      ".forecast__precipitation-humidity"
+      '.forecast__precipitation-humidity'
     ).innerText = `Total Precipitation: ${weatherForecast[key].totalPrecip}, Humidity: ${weatherForecast[key].avgHumidity}`;
-    template.querySelector(".forecast__rain").innerText = `Chance of rain: ${
-      weatherForecast[key].dailyChanceOfRain
-    }, Will it rain: ${weatherForecast[key].dailyWillItRain ? "Yes" : "No"}`;
-    document.querySelector(".week__container").appendChild(template);
+    template.querySelector('.forecast__rain').innerText = `Rain: ${
+      weatherForecast[key].dailyWillItRain ? '✔' : '❌'
+    }`;
+    template.querySelector('.forecast__image').src =
+      weatherForecast[key].condition.icon;
+    document.querySelector('.week__container').appendChild(template);
   }
 }
