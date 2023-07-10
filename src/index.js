@@ -120,7 +120,7 @@ function createWeatherInfo(weatherData, locationData) {
   template.querySelector(".country").innerText = locationData.country;
   template.querySelector(
     ".city__region"
-  ).innerText = `${locationData.name} - ${locationData.region}`;
+  ).innerText = `${locationData.name} ⋅ ${locationData.region}`;
   template.querySelector(".local__time").innerText = locationData.localTime;
   template.querySelector("#temp__number").innerText = weatherData.temp;
   template.querySelector("#feels__like--number").innerText =
