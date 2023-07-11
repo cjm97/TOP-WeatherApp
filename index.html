@@ -22,9 +22,8 @@
 <template id="weather-hourly">
     <div class="hour__info">
         <p class="hour__time">time</p>
-        <p class="hour__condition">condition</p>
-        <p class="hour__temperature">temperature<span
-            class="metric__imperial">°C</span></p>
+        <img src="" alt="" class="hour__condition">
+        <p><span class="hour__temperature">temperature</span><span class="metric__imperial">°C</span></p>
 
     </div>
 </template>
@@ -32,14 +31,16 @@
 <template id="weather-forecast">
     <div class="forecast__container">
         <h3 class="forecast__header">Forecast Day</h4>
-            <p class="forecast__humidity" title='humidity'><span id = 'humidity'>💧</span></p>
-            <p>
+            <p class="forecast__humidity" title='humidity'><span id='humidity'>💧</span></p>
+            <p title="lowest temperature">
                 🔻
-                <span class="temp" id="min__temp" class="min__temp">10 </span><span class="metric__imperial" class="min__temp">°C </span>
+                <span class="temp" id="min__temp" class="min__temp">10 </span><span class="metric__imperial"
+                    class="min__temp">°C </span>
             </p>
-            <p>
+            <p title="peak temperature">
                 🔺
-                <span class="temp" id="max__temp" class="max__temp">20 </span><span class="metric__imperial" class="max__temp">°C </span>
+                <span class="temp" id="max__temp" class="max__temp">20 </span><span class="metric__imperial"
+                    class="max__temp">°C </span>
             </p>
             <p class="forecast__rain">Will it Rain / Chance of Rain</p>
             <img src="" alt="" class="forecast__image">
@@ -66,9 +67,6 @@
             </form>
             <button class="temperature__conversion--button" data-temperature-conversion>&#176;C / &#176;F</button>
         </nav>
-        <div id="hourly__container">
-
-        </div>
         <div id="weather__container">
 
         </div>
