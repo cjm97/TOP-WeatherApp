@@ -16,7 +16,7 @@ function convertTemperature(temperature) {
 async function getWeather(location) {
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=6b1d1ff3871e4566a6c62703233006&q=${location}&days=7`,
+      `https://api.weatherapi.com/v1/forecast.json?key=6b1d1ff3871e4566a6c62703233006&q=${location}&days=7`,
       { mode: 'cors' }
     );
     const data = await response.json();
