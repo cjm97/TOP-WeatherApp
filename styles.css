@@ -77,7 +77,7 @@ body {
   color: var(--white);
   background-color: var(--blue);
   font-weight: bold;
-  font: 1rem;
+  font-size: 1rem;
 }
 
 .temperature__conversion--button:hover {
@@ -208,4 +208,59 @@ nav {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--cyan);
+}
+
+/* medium screen */
+
+@media all and (max-width: 768px) {
+  .nav__header {
+    font-size: 1rem;
+  }
+
+  .forecast__header {
+    font-size: 1.25rem;
+  }
+}
+/* small screen */
+
+@media all and (max-width: 576px) {
+  .temperature__conversion--button {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+
+  .nav__button {
+    padding: 2px 4px;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+  }
+  .nav__search {
+    padding: 2px 2px 2px 6px;
+    margin-left: 0.25rem;
+  }
+
+  .country {
+    font-size: 1.5rem;
+  }
+
+  .city__region {
+    font-size: 1.25rem;
+  }
+
+  .temperature {
+    font-size: 3rem;
+  }
+  .feels__like--temp,
+  .weather__conditions {
+    font-size: 1rem;
+  }
+
+  .forecast__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .forecast__humidity,
+  .forecast__rain {
+    display: none;
+  }
 }
